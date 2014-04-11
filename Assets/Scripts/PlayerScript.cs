@@ -82,7 +82,7 @@ public class PlayerScript : MonoBehaviour
 		if (healthScript.hp <= 0)
 		{
 			Destroy(gameObject);
-
+  
 		}
 		
 	}
