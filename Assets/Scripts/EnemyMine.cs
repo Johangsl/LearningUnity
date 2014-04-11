@@ -5,11 +5,9 @@ public class EnemyMine : MonoBehaviour {
 
 	private bool hasSpawn;
 	private HealthScript healthScript;
+	private PlayerHealth pHP;
 	
 	private Animator animator;
-	
-	
-	public Vector2 zigZagMove;
 
 	public float distanceFromPlayer;
 	private Vector2 distancePlayer;
@@ -24,6 +22,7 @@ public class EnemyMine : MonoBehaviour {
 		// Retrieve scripts to disable when not spawn
 		healthScript = GetComponent<HealthScript>();
 		animator = GetComponent<Animator>();
+		pHP = GetComponent<PlayerHealth> ();
 		circuleCollider = gameObject.collider2D as CircleCollider2D;
 	}
 	
@@ -88,14 +87,11 @@ public class EnemyMine : MonoBehaviour {
 			animator.SetBool("Death", true);
 			Destroy(gameObject, 0.3f);
 		}
-		
-		
-		
 	}
 
 	private void OnTriggerEnter2D(Collider2D otherCollider){
 		Debug.Log ("you just hit me");
-		healthScript.Damage (5);
+		pHP.playerDamage (5);
 	}
 	
 	// 3 - Activate itself.

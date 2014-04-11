@@ -79,11 +79,11 @@ public class PlayerScript : MonoBehaviour
 			transform.position.z
 			);
 		
-		if (healthScript.hp <= 0)
-		{
-			Destroy(gameObject);
-  
-		}
+//		if (healthScript.hp <= 0)
+//		{
+//			Destroy(gameObject);
+//  
+//		}
 		
 	}
 
@@ -92,8 +92,6 @@ public class PlayerScript : MonoBehaviour
 		// Game Over.
 		// Add the script to the parent because the current game
 		// object is likely going to be destroyed immediately.
-		animator.SetBool("Death", true);
-		Destroy(gameObject, 0.2f);
 		transform.parent.gameObject.AddComponent<GameOverScript>();
 	}
 	

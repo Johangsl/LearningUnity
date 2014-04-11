@@ -59,11 +59,22 @@ public class HealthScript : MonoBehaviour
         }
     }
 
+	public void PlayerDamage(int DamageCount)
+	{
+
+		hp -= DamageCount;
+		if (hp <= 0)
+		{
+			SoundEffectsHelper.Instance.MakeExplosionSound();
+		}
+
+	}
+
 
     void OnTriggerEnter2D(Collider2D otherCollider)
     {
 
-		enemyName = GameObject.Find ("Mine").name;
+		enemyName = otherCollider.gameObject.name;
         // Is this a shot?
 
 		ShotScript shot = otherCollider.gameObject.GetComponent<ShotScript>();
@@ -85,6 +96,9 @@ public class HealthScript : MonoBehaviour
 
 		case "Mine":
 				mineDamage();
+			break;
+		case "Player":
+			PlayerDamage(1);
 			break;
 		default:
 			break;
