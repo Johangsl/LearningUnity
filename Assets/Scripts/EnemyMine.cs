@@ -18,8 +18,6 @@ public class EnemyMine : MonoBehaviour {
 
 	void Awake()
 	{
-		// Retrieve the weapon only once
-		// Retrieve scripts to disable when not spawn
 		healthScript = GetComponent<HealthScript>();
 		animator = GetComponent<Animator>();
 		pHP = GetComponent<PlayerHealth> ();
@@ -34,7 +32,6 @@ public class EnemyMine : MonoBehaviour {
 		// Disable everything
 		// -- collider
 		DisableEnemy();
-		
 	}
 	
 	private void DisableEnemy()
@@ -91,7 +88,7 @@ public class EnemyMine : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D otherCollider){
 		Debug.Log ("you just hit me");
-		pHP.playerDamage (5);
+		otherCollider.GetComponent<PlayerHealth> ().playerDamage (5);
 	}
 	
 	// 3 - Activate itself.

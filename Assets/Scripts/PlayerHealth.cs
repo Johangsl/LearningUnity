@@ -7,17 +7,17 @@ public class PlayerHealth : MonoBehaviour {
 	private Animator animator;
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
-
+	
 	void Awake()
 	{
 		animator = GetComponent<Animator> ();
 	}
-
+	
 	public void playerDamage(int dmg){
 		playerHP -= dmg;
-
+		
 		if (playerHP <= 0)
 		{
 			animator.SetBool("Death", true);

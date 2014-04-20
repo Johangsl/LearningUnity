@@ -11,7 +11,7 @@ public class EnemyScript : MonoBehaviour
     private HealthScript healthScript;
 
     private Animator animator;
-
+		
 
 	public Vector2 zigZagMove;
 
