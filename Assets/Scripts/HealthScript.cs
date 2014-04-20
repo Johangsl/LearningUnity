@@ -17,14 +17,12 @@ public class HealthScript : MonoBehaviour
     public bool isEnemy = true;
     private Animator animator;
 	private string enemyName;
-	private PlayerHealth playerHealth;
 
 		//private Animation enemyHit;
 
-    void Awake()
+    void Start()
     {
         animator = GetComponent<Animator>();
-		playerHealth = GetComponent<PlayerHealth>();
     }
 
 
@@ -91,8 +89,6 @@ public class HealthScript : MonoBehaviour
 
 				// Destroy the shot
                 Destroy(shot.gameObject); // Remember to always target the game object, otherwise you will just remove the script);
-			}
-			else {
 			}
         }
 
