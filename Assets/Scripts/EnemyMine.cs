@@ -88,7 +88,14 @@ public class EnemyMine : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D otherCollider){
 		Debug.Log ("you just hit me");
-		otherCollider.GetComponent<PlayerHealth> ().playerDamage (5);
+		string player;
+		player = otherCollider.name;
+
+		if (player == "Player") 
+		{
+			otherCollider.GetComponent<PlayerHealth> ().playerDamage (5);
+		}
+
 	}
 	
 	// 3 - Activate itself.
