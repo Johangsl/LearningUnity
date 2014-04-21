@@ -79,6 +79,9 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
+		//zig Zag
+		float currPos = gameObject.transform.position.y;
+		gameObject.transform.Translate (0.0f,  0.02f, 0.0f, Space.World) ;
 
         if (healthScript.hp <= 0)
         {
