@@ -16,11 +16,29 @@ public class EnemyMine : MonoBehaviour {
 	private float curCircileCollider;
 	private float circuleColliderBlow;
 
+	private GameDirector gameDirector;
+
+	private
+
 	void Awake()
 	{
 		healthScript = GetComponent<HealthScript>();
 		animator = GetComponent<Animator>();
 		pHP = GetComponent<PlayerHealth> ();
+
+		GameObject gameDirectorObject = GameObject.FindWithTag ("GameController");
+
+		if (gameDirectorObject != null) 
+		{
+			gameDirector = gameDirectorObject.GetComponent<GameDirector>();
+		}
+		else 
+		{
+			Debug.Log("Cannot find 'Game Director Script' ");
+		}
+
+		gameDirector = GetComponent<GameDirector> ();
+
 		circuleCollider = gameObject.collider2D as CircleCollider2D;
 	}
 	
@@ -77,12 +95,18 @@ public class EnemyMine : MonoBehaviour {
 
 			//circuleCollider.radius = circuleColliderBlow;
 		}
-		
+
+		//kill Mine
 		if (healthScript.hp <= 0)
 		{
+			gameDirector.addScore(5);
 			DisableEnemy();
 			animator.SetBool("Death", true);
+
+			//Object is dead
 			Destroy(gameObject, 0.3f);
+
+
 		}
 	}
 
